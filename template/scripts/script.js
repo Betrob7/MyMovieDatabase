@@ -1,3 +1,5 @@
+import { renderRandomTrailers } from "./modules/caroussel.js";
+
 
 if(window.location.pathname === '/' || window.location.pathname === '/index.html') {
     console.log('index.html');
@@ -12,3 +14,5 @@ if(window.location.pathname === '/' || window.location.pathname === '/index.html
     console.log('search.html');
 
 }
+
+renderRandomTrailers();

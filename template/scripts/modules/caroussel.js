@@ -1,3 +1,4 @@
+import { getRandomTrailers } from "./shuffle.js";
 
 export function renderTrailers(movie, num) {
     const iFrameRef = document.createElement(`iframe`);
@@ -36,4 +37,15 @@ function changeTrailer(event, trailerList, trailerArray) {
         item.classList.add(`trailers__video-${i + 1}`)
     });
 }
+
+async function renderRandomTrailers() {
+    const randomTrailers = await getRandomTrailers();
+    randomTrailers.forEach((movie, index) => {
+        renderTrailers(movie, index);
+    })
+}
+
+export {renderRandomTrailers};
+
+
 
