@@ -6,6 +6,8 @@ export async function fetchTopMovies() {
             throw new Error(`Something went wrong! Status: ${response.status}`); 
         }
         let movies = await response.json();
+        console.log(movies);
+        
 
         if(!Array.isArray(movies)) {
             throw new Error('Wrong format, format is not an array!')
@@ -15,7 +17,7 @@ export async function fetchTopMovies() {
         
     } catch (error) {
         console.log(error.message);
-        showErrorMessage();
+        showErrorMessage('Oh no! Something went wrong, please refresh the page');
         return [];
     }
 }
