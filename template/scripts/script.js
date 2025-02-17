@@ -1,4 +1,5 @@
 import { renderRandomTrailers } from "./modules/caroussel.js";
+import { renderTopMovies } from "./modules/topMovies.js";
 
 
 if(window.location.pathname === '/' || window.location.pathname === '/index.html') {
@@ -16,3 +17,5 @@ if(window.location.pathname === '/' || window.location.pathname === '/index.html
 }
 
 renderRandomTrailers();
+renderTopMovies();
+
