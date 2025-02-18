@@ -26,7 +26,7 @@ async function fetchOmdbMovies(query) {
         if(!response.ok) {
             throw new Error(`Something went wrong! Status: ${response.status}`);
         }
-        let movies =await response.json();
+        let movies = await response.json();
         console.log(movies);
 
         if (movies.Response === "False" || !movies.Search) {
@@ -41,5 +41,23 @@ async function fetchOmdbMovies(query) {
         
     }
 }
-export {fetchOmdbMovies};
+
+async function fetchMovieInformation(query) {
+    try {let response = await fetch(`http://www.omdbapi.com/?apikey=a1dc276d&plot=full&i=${query}`);
+        if(!response.ok) {
+            throw new Error(`Something went wrong! Status: ${response.status}`);
+        }
+        let movieInfo = await response.json();
+        console.log(movieInfo);
+
+        return movieInfo;
+        
+        
+    } catch (error) {
+        console.log(error.message);
+        return {};
+        
+    }
+}
+export {fetchOmdbMovies, fetchMovieInformation};
 

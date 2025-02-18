@@ -1,4 +1,4 @@
-import { getRandomTrailers } from "./shuffle.js";
+import { getRandomTrailers } from "../components/shuffle.js";
 
 export function renderTrailers(movie, num) {
     const iFrameRef = document.createElement(`iframe`);
