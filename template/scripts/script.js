@@ -12,13 +12,16 @@ if(window.location.pathname === '/' || window.location.pathname.includes('index.
 
 } else if(window.location.pathname.includes('favorites.html')) {
     console.log('favorites.html');
+    searchListener();
 
 } else if(window.location.pathname.includes('movie.html')) {
     console.log('movie.html');
+    searchListener();
 
 } else if(window.location.pathname.includes('search.html')) {
     console.log('search.html');
     renderSearchedMovies();
+    searchListener();
 
 }
 
