@@ -6,6 +6,14 @@ function showErrorMessage(message) {
         contentWrapper.prepend(errorMessage);
 }
 
+function showErrorMessageSearch(message) {
+    let contentWrapper = document.querySelector('#searchResults');
+        let errorMessage = document.createElement('p')
+        errorMessage.textContent = message;
+        errorMessage.classList.add('error-message-API')
+        contentWrapper.prepend(errorMessage);
+}
+
 function showTopMovies(movies) {
     let cardContainer = document.querySelector('#cardContainer');
     for(let movie of movies) {
@@ -34,6 +42,6 @@ function displayMovies(movies) {
     }
 }
 
-export {showErrorMessage, showTopMovies, displayMovies};
+export {showErrorMessage, showTopMovies, displayMovies, showErrorMessageSearch};
 
 
