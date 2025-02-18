@@ -34,6 +34,7 @@ function displayMovies(movies) {
     for(let movie of movies) {
         let movieRef = document.createElement('article');
         movieRef.classList.add('movie-card');
+        movieRef.dataset.imdbid = movie.imdbID;
         movieRef.innerHTML = `
         <img src="${movie.Poster}" alt="${movie.Title}">
         <h2>${movie.Title}</h2>

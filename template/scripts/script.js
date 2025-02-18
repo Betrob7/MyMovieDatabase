@@ -1,7 +1,7 @@
 import { renderRandomTrailers } from "./modules/caroussel.js";
 import { renderTopMovies } from "./modules/topMovies.js";
 import { renderSearchedMovies } from "./modules/search.js";
-import { searchListener } from "./modules/eventHandlers.js";
+import { searchListener, moreInfoListener } from "./modules/eventHandlers.js";
 
 
 if(window.location.pathname === '/' || window.location.pathname.includes('index.html')) {
@@ -22,6 +22,7 @@ if(window.location.pathname === '/' || window.location.pathname.includes('index.
     console.log('search.html');
     renderSearchedMovies();
     searchListener();
+    moreInfoListener();
 
 }
 
