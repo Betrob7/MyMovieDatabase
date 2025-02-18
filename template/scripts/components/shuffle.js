@@ -1,4 +1,4 @@
-import { fetchTopMovies } from "./api.js";
+import { fetchTopMovies } from "../modules/api.js";
 //Fisher yates shuffle
 function shuffleArray(array) {
     let shuffled = [...array]; // Skapar en kopia för att inte ändra originalet
