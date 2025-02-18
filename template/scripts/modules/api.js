@@ -10,9 +10,8 @@ export async function fetchTopMovies() {
         
 
         if(!Array.isArray(movies)) {
-            throw new Error('Wrong format, format is not an array!')
+            throw new Error('Wrong format, format is not an array')
         }
-        
         return movies;
         
     } catch (error) {
@@ -21,4 +20,26 @@ export async function fetchTopMovies() {
         return [];
     }
 }
+
+async function fetchOmdbMovies(query) {
+    try {let response = await fetch(`http://www.omdbapi.com/?apikey=a1dc276d&s=${query}`);
+        if(!response.ok) {
+            throw new Error(`Something went wrong! Status: ${response.status}`);
+        }
+        let movies =await response.json();
+        console.log(movies);
+
+        if (movies.Response === "False" || !movies.Search) {
+            return [];
+        }
+
+        return movies.Search;
+
+    } catch (error) {
+        console.log(error.message);
+        return [];
+        
+    }
+}
+export {fetchOmdbMovies};
 
