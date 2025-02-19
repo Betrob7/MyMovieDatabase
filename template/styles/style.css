@@ -8,7 +8,7 @@
     --primary-bg: #000000;
     --primary-white: #ffffff;
     --primary-grey: #1A1A1A;
-    --text-yellow: #F5C518;
+    --text-yellow: #0b3d0b;
 }
 
 /* Base */
@@ -19,7 +19,9 @@
 }
 
 body {
-    background-color: var(--primary-bg);
+    background: linear-gradient(-45deg, #0b3d0b, #145214, #1d701d, #2fa62f);
+    background-size: 400% 400%;
+    animation: greenGradientFade 12s ease infinite;
     max-width: 100%;
 }
 
@@ -89,8 +91,111 @@ body {
     margin-top: 10rem;
 }
 
-
 .card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+    max-width: 1200px;
+    width: 100%;
+    justify-items: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+/* 🎬 Kort med neumorphism och transparens */
+.movie-card {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 8px 8px 15px #a3b1c6, -8px -8px 15px #ffffff;
+    overflow: hidden;
+    width: 100%;
+    max-width: 280px;
+    height: 500px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    color: #ffffff; /* 🤍 Vit text */
+}
+
+.movie-card img {
+    width: 100%;
+    height: 65%;
+    object-fit: contain; /* 🎯 Hela bilden visas utan att beskäras */
+    object-position: center;
+    background-color: rgba(255, 255, 255, 0.05); /* Lätt bakgrund om bilden inte fyller ut */
+    border-radius: 20px 20px 0 0;
+}
+
+/* 🎥 Filmtitel */
+.movie-card h2 {
+    font-size: 1.3rem;
+    margin: 10px 0;
+    font-weight: 400;
+    color: #ffffff; /* 🤍 Vit text för bra kontrast */
+}
+
+/* 🎟️ "Visa mer"-knapp centreras snyggt */
+.movie-card a {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff; /* 🤍 Vit text på knappen */
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 50px;
+    width: 80%;
+    margin: 10px auto 20px auto;
+    box-shadow: inset 4px 4px 8px #a3b1c6, inset -4px -4px 8px #ffffff;
+    transition: background 0.3s ease, transform 0.3s ease;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+.movie-card a:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-3px);
+}
+
+.movie-card :hover {
+    cursor: pointer;
+}
+
+/* 💖 Like-knapp - centralt placerad uppe till höger */
+.like-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(255, 255, 255, 0.15);
+    border: none;
+    color: #ff6b6b;
+    font-size: 1.8rem;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.like-btn.liked {
+    background: rgba(255, 87, 87, 0.5);
+    color: white;
+}
+
+.like-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.2);
+}
+
+/* ✨ Hover-effekt på kortet */
+.movie-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 12px 12px 24px #a3b1c6, -12px -12px 24px #ffffff;
+}
+
+
+/* .card-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 4rem;
@@ -146,40 +251,45 @@ body {
 .movie-card:hover {
     transform: scale(1.05);
     box-shadow: 0 8px 16px #5c0505;
-}
+} */
 
 /* 🎬 Film-info layout */
+/* 🎬 Film-info sektionen med neumorphism och transparens */
 .movie-information {
     display: flex;
     align-items: center;
     justify-content: center;
-    max-width: 900px;
+    max-width: 1000px;
     margin: 50px auto;
-    padding: 20px;
-    background: linear-gradient(135deg, #222, #3a3a3a);
-    border-radius: 15px;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
-    color: #fff;
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.08); /* Transparent bakgrund */
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 8px 8px 15px #a3b1c6, -8px -8px 15px #ffffff;
+    color: #ffffff;
     overflow: hidden;
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
 }
 
 .movie-information:hover {
-    transform: scale(1.02);
+    transform: translateY(-5px);
+    box-shadow: 12px 12px 24px #a3b1c6, -12px -12px 24px #ffffff;
 }
 
-/* 🖼 Filmens poster */
+/* 🖼 Filmens poster i contain-läge */
 .movie-information img {
     width: 40%;
-    border-radius: 10px;
-    object-fit: cover;
-    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.2);
+    height: 400px;
+    border-radius: 20px;
+    object-fit: contain; /* 🎯 Visar hela bilden utan att beskära */
+    background-color: rgba(255, 255, 255, 0.05);
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.2), -4px -4px 12px rgba(255, 255, 255, 0.2);
 }
 
 /* 📜 Film-info sektionen */
 .movie-information div {
     width: 60%;
-    padding: 20px;
+    padding: 30px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -188,52 +298,78 @@ body {
 /* 🎥 Titel */
 .movie-information h2 {
     font-size: 28px;
-    margin-bottom: 10px;
-    color: #ff9800;
+    margin-bottom: 15px;
+    font-weight: 600;
+    color: #ffffff;
 }
 
 /* 📝 Övrig info */
 .movie-information p {
     font-size: 18px;
-    margin: 5px 0;
-    line-height: 1.4;
+    margin: 10px 0;
+    line-height: 1.6;
+    color: #e0e0e0;
 }
 
 /* ✨ Extra styling för labels */
 .movie-information p strong {
     color: #ffcc66;
+    font-weight: 600;
 }
 
-/* 🔙 Tillbaka-knapp */
+/* 🔙 Tillbaka-knapp i neumorphism-stil */
 #backButton {
     display: inline-block;
-    margin-top: 15px;
-    padding: 10px 20px;
-    background: #ff9800;
-    color: #000;
+    margin-top: 20px;
+    padding: 12px 28px;
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
     text-decoration: none;
-    font-weight: bold;
-    border-radius: 5px;
+    font-weight: 500;
+    border-radius: 50px;
     text-align: center;
-    transition: background 0.3s ease-in-out;
+    box-shadow: inset 4px 4px 8px #a3b1c6, inset -4px -4px 8px #ffffff;
+    transition: background 0.3s ease, transform 0.3s ease;
 }
 
 #backButton:hover {
-    background: #e68900;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-3px);
 }
+
+/* 📱 Responsivt för mindre skärmar */
+@media (max-width: 768px) {
+    .movie-information {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .movie-information img {
+        width: 100%;
+        height: 300px;
+        margin-bottom: 20px;
+    }
+
+    .movie-information div {
+        width: 100%;
+        padding: 20px;
+    }
+}
+
 
 
 
 @media (max-width: 768px) {
     .card-container {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     }
-    
+
     .movie-card {
         max-width: 200px;
+        height: 420px;
     }
-    
+
     .movie-card img {
-        height: 250px;
+        height: 60%;
     }
 }
