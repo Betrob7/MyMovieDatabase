@@ -3,6 +3,7 @@ import { renderTopMovies } from "./modules/topMovies.js";
 import { renderSearchedMovies } from "./modules/search.js";
 import { searchListener, moreInfoListener } from "./modules/eventHandlers.js";
 import { renderMovieInformation } from "./modules/movieInfo.js";
+import { topMoviesListener } from "./modules/eventHandlers.js";
 
 
 if(window.location.pathname === '/' || window.location.pathname.includes('index.html')) {
@@ -10,6 +11,7 @@ if(window.location.pathname === '/' || window.location.pathname.includes('index.
     renderRandomTrailers();
     renderTopMovies();
     searchListener();
+    topMoviesListener();
 
 } else if(window.location.pathname.includes('favorites.html')) {
     console.log('favorites.html');
