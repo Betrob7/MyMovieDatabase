@@ -68,7 +68,7 @@ function topMoviesListener() {
             movie.addEventListener('click', (event) => {
             event.preventDefault();
 
-            let movies = event.target.closest(".movie-card"); //closest hämtar imdb-id från det närmsta kortet, oavsett vad användaren klickar på
+            let movies = event.target.closest(".movie-card"); 
             console.log(event.target);
         
             let imdbID = movies.dataset.imdbid;
@@ -89,9 +89,9 @@ function likeButtonListener() {
 
     likeButtons.forEach((button) => {
         button.addEventListener("click", (event) => {
-            event.stopPropagation(); // 🔥 Hindra att kortet triggar klicklyssnaren
-            const movieCard = event.target.closest(".movie-card");
-            const imdbID = movieCard.dataset.imdbid;
+            event.stopPropagation(); //Hindrar att en like triggar den andra klicklyssnaren
+            const movieCard = event.target.closest(".movie-card"); //Sparar ner det föräldraelement med klassen movie-card som ligger närmst klickeventet
+            const imdbID = movieCard.dataset.imdbid; //Använder metoden dataset.imdbid för att hämta imdbID på det klickade kortet
 
             toggleLike(imdbID, event.target);
         });

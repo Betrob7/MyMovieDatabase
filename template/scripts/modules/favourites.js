@@ -5,7 +5,7 @@ async function renderLikedMovies() {
     let likedMovies = JSON.parse(localStorage.getItem("likedMovies")) || [];
 
     if (likedMovies.length === 0) {
-        document.querySelector("#favoritesContainer").innerHTML = "<p>😔 Inga filmer gillade ännu.</p>";
+        document.querySelector("#favoritesContainer").innerHTML = "<p>Du har inte gillar några filmer än!</p>";
         return;
     }
 

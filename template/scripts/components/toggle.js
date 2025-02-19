@@ -1,18 +1,18 @@
 export function toggleLike(imdbID, button) {
-    let favorites = JSON.parse(localStorage.getItem("likedMovies")) || [];
+    let favorites = JSON.parse(localStorage.getItem("likedMovies")) || []; // hämtar favoriter från localStorage
 
-    if (favorites.includes(imdbID)) {
-        // 🔥 Ta bort like
-        favorites = favorites.filter((id) => id !== imdbID);
-        button.classList.remove("liked");
-        button.textContent = "🤍";
+    if (favorites.includes(imdbID)) { //kollar ifall favoriter inkluderar imdbID
+       
+        favorites = favorites.filter((id) => id !== imdbID); // skapar en ny lista som exkluderar det aktuella imdbID (tar bort filmen från favoriter)
+        button.classList.remove("liked"); // tar bort klassen favoritfilmerna har
+        button.textContent = "🤍"; // ändrar symbolen till default-läge
     } else {
-        // 🔥 Lägg till like
-        favorites.push(imdbID);
-        button.classList.add("liked");
-        button.textContent = "💖";
+        
+        favorites.push(imdbID); // lägger till imdbID till favoriter
+        button.classList.add("liked"); // lägger till korrekt klass
+        button.textContent = "💖"; // ändrar symbolen
     }
 
-    localStorage.setItem("likedMovies", JSON.stringify(favorites));
-    console.log(`⭐ Uppdaterade likes:`, favorites);
+    localStorage.setItem("likedMovies", JSON.stringify(favorites)); // uppdaterar localstorage
+    
 }
