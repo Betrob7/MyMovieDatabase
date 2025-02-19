@@ -80,7 +80,7 @@ function displayMovieInformation(movie) {
                 <p><strong>Genre:</strong> ${movie.Genre}</p>
                 <p><strong>Director:</strong> ${movie.Director}</p>
                 <p><strong>IMDB Rating:</strong> ${movie.imdbRating}</p>
-                <a id="backButton" href="index.html">🔙 Back to Search</a>
+                <a id="backButton" href="index.html">Back</a>
             </div>
         `;
 }
@@ -96,7 +96,7 @@ function displayLikedMovie(movie) {
         <img src="${movie.Poster}" alt="${movie.Title}">
         <h2>${movie.Title}</h2>
         <p>Year: ${movie.Year}</p>
-        <button class="like-btn liked">💖 Ta bort gillning</button>
+        
     `;
 
     container.appendChild(movieCard);
