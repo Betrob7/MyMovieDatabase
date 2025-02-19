@@ -27,6 +27,7 @@ function showTopMovies(movies) {
     for(let movie of movies) {
     let movieCard = document.createElement('article');
         movieCard.classList.add('movie-card');
+        movieCard.dataset.imdbid = movie.imdbID;
         movieCard.innerHTML = `
         <img src="${movie.Poster}" alt="${movie.Title}">
         <h2>${movie.Title}</h2>
