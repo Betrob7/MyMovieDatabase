@@ -37,11 +37,11 @@ function changeTrailer(event, trailerList, trailerArray) {
         item.classList.add(`trailers__video-${i + 1}`)
     });
 }
-
+//hämtar in shuffle-funktionen och övrig funktionalitet för att kunna trycka ut på skärmen samt bläddra
 async function renderRandomTrailers() {
-    const randomTrailers = await getRandomTrailers();
-    randomTrailers.forEach((movie, index) => {
-        renderTrailers(movie, index);
+    const randomTrailers = await getRandomTrailers(); // sparar ner 5 trailers
+    randomTrailers.forEach((trailer, index) => { //loopar igenom trailers för att trycka ut på skärmen
+        renderTrailers(trailer, index);
     })
 }
 
