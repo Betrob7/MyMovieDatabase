@@ -3,14 +3,14 @@ import { toggleLike } from "../components/toggle.js";
 function searchListener() {
     console.log('searchListener()');
     
-document.querySelector('#searchForm').addEventListener('submit', function(event) {
+document.querySelector('#searchForm').addEventListener('submit', function(event) { // lyssnar på submit på formuläret
     event.preventDefault();
 
     let searchInput = document.querySelector('#searchInput');
-    let userInput = document.querySelector('#searchInput').value.toLowerCase();
-        localStorage.setItem('userSearch', userInput);
-        searchInput.value = '';
-        window.location.href = 'search.html';
+    let userInput = document.querySelector('#searchInput').value.toLowerCase(); //sparar ner användarens sökning
+        localStorage.setItem('userSearch', userInput); //sparar sökningen i localStorage med nyckeln 'userSearch', använder alltid samma nyckel vilket gör att den gamla sökningen skrivs över varje gång
+        searchInput.value = ''; //tömmer sökfältet
+        window.location.href = 'search.html'; //skickar användaren vidare till söksidan
 })
 }
 //lyssnare för att hämta mer info om film vid klick
@@ -93,7 +93,7 @@ function likeButtonListener() {
             const movieCard = event.target.closest(".movie-card"); //Sparar ner det föräldraelement med klassen movie-card som ligger närmst klickeventet
             const imdbID = movieCard.dataset.imdbid; //Använder metoden dataset.imdbid för att hämta imdbID på det klickade kortet
 
-            toggleLike(imdbID, event.target);
+            toggleLike(imdbID, event.target); //kör toggle-funktionen och skickar in imdbID och even.target(den exakta like-knappen(button) som klickas)
         });
     });
 }
