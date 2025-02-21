@@ -115,6 +115,80 @@ body {
     cursor: pointer;
 }
 
+/*Dropdown meny*/
+/* 🏃‍♂️ Placera dropdownen precis under sökfältet och gör den kompakt */
+.header__form {
+  position: relative; /* Viktigt för att dropdownen ska positioneras korrekt */
+  width: 100%;
+  max-width: 400px; /* Justera till den bredd du önskar */
+  margin: 0 auto;
+}
+
+.dropdown-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 5px 0 0 0;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  max-height: 300px;
+  overflow-y: auto;
+  position: absolute;
+  width: 100%; /* Samma bredd som form:en */
+  top: 100%; /* Placera direkt under input-fältet */
+  left: 0;
+  background-color: rgb(72, 11, 11);
+  color: #fff;
+  display: none;
+  z-index: 100;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px;
+  cursor: pointer;
+  border-bottom: 1px solid #f0f0f0;
+  transition: background-color 0.2s ease;
+}
+
+.dropdown-list li:last-child {
+  border-bottom: none;
+}
+
+.dropdown-list li:hover {
+  background-color: #f9f9f9;
+}
+
+.dropdown-list img {
+  width: 40px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.movie-info {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.movie-title {
+  font-weight: bold;
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.movie-year {
+  font-size: 12px;
+  color: #777;
+}
+
+  
+/*error message*/
 .error-message-API {
     color: red;
     text-align: center;

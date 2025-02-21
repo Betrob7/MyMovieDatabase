@@ -1,4 +1,5 @@
 import { toggleLike } from "../components/toggle.js";
+import { fetchOmdbMovies } from "./api.js";
 //lyssnare för sökrutan
 function searchListener() {
     console.log('searchListener()');
@@ -97,4 +98,52 @@ function likeButtonListener() {
         });
     });
 }
-export {searchListener, moreInfoListener, topMoviesListener, likeButtonListener, moreFavouriteInfoListener};
+
+//lyssnare för dropdown-meny
+function dropdownMenuListener() {
+
+    const searchInput = document.getElementById("searchInput");
+    const dropdown = document.getElementById("dropdown");
+    
+    searchInput.addEventListener("input", async function () {
+      const searchText = this.value.trim();
+    
+      if (searchText === "") {
+        dropdown.style.display = "none";
+        dropdown.innerHTML = "";
+        return;
+      }
+    
+      const movies = await fetchOmdbMovies(searchText);
+      dropdown.innerHTML = "";
+    
+      if (movies.length > 0) {
+        movies.forEach((movie) => {
+          const li = document.createElement("li");
+          li.innerHTML = `
+            <img src="${movie.Poster !== "N/A" ? movie.Poster : "./res/default-poster.png"}" alt="${movie.Title}">
+            <div class="movie-info">
+              <span class="movie-title">${movie.Title}</span>
+              <span class="movie-year">${movie.Year}</span>
+            </div>
+          `;
+          li.addEventListener("click", () => {
+            searchInput.value = movie.Title;
+            dropdown.style.display = "none";
+          });
+          dropdown.appendChild(li);
+        });
+        dropdown.style.display = "block";
+      } else {
+        dropdown.style.display = "none";
+      }
+    });
+    
+    // Dölj dropdown när man klickar utanför
+    document.addEventListener("click", (event) => {
+      if (!event.target.closest(".header__form")) {
+        dropdown.style.display = "none";
+      }
+    });
+}
+export {searchListener, moreInfoListener, topMoviesListener, likeButtonListener, moreFavouriteInfoListener, dropdownMenuListener};
