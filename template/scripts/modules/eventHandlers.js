@@ -89,11 +89,11 @@ function likeButtonListener() {
 
     likeButtons.forEach((button) => {
         button.addEventListener("click", (event) => {
-            event.stopPropagation(); //Hindrar att en like triggar den andra klicklyssnaren
-            const movieCard = event.target.closest(".movie-card"); //Sparar ner det föräldraelement med klassen movie-card som ligger närmst klickeventet
-            const imdbID = movieCard.dataset.imdbid; //Använder metoden dataset.imdbid för att hämta imdbID på det klickade kortet
+        event.stopPropagation(); //Hindrar att en like triggar den andra klicklyssnaren
+        const movieCard = event.target.closest(".movie-card"); //Sparar ner det föräldraelement med klassen movie-card som ligger närmast klickeventet
+        const imdbID = movieCard.dataset.imdbid; //Använder metoden dataset.imdbid för att hämta imdbID på det klickade kortet
 
-            toggleLike(imdbID, event.target); //kör toggle-funktionen och skickar in imdbID och even.target(den exakta like-knappen(button) som klickas)
+            toggleLike(imdbID, event.target); //kör toggle-funktionen och skickar in imdbID och event.target(den exakta like-knappen(button) som klickas)
         });
     });
 }
