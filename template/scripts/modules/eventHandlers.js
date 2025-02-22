@@ -102,26 +102,26 @@ function likeButtonListener() {
 //lyssnare för dropdown-meny
 function dropdownMenuListener() {
 
-    const searchInput = document.getElementById("searchInput");
-    const dropdown = document.getElementById("dropdown");
+    const searchInput = document.querySelector('#searchInput');
+    const dropdown = document.querySelector('#dropdown');
     
     searchInput.addEventListener("input", async function () {
-      const searchText = this.value.trim();
+      const searchText = searchInput.value.trim();
     
-      if (searchText === "") {
-        dropdown.style.display = "none";
-        dropdown.innerHTML = "";
+      if (searchText === '') {
+        dropdown.style.display = 'none';
+        dropdown.innerHTML = '';
         return;
       }
     
       const movies = await fetchOmdbMovies(searchText);
-      dropdown.innerHTML = "";
+      dropdown.innerHTML = '';
     
       if (movies.length > 0) {
         movies.forEach((movie) => {
           const li = document.createElement("li");
           li.innerHTML = `
-            <img src="${movie.Poster !== "N/A" ? movie.Poster : "./res/default-poster.png"}" alt="${movie.Title}">
+            <img src="${movie.Poster !== "N/A" ? movie.Poster : "./res/icons/missing-poster.svg"}" alt="${movie.Title}">
             <div class="movie-info">
               <span class="movie-title">${movie.Title}</span>
               <span class="movie-year">${movie.Year}</span>

@@ -116,7 +116,7 @@ body {
 }
 
 /*Dropdown meny*/
-/* 🏃‍♂️ Placera dropdownen precis under sökfältet och gör den kompakt */
+/* Placera dropdownen precis under sökfältet och gör den kompakt */
 .header__form {
   position: relative; /* Viktigt för att dropdownen ska positioneras korrekt */
   width: 100%;
@@ -176,7 +176,7 @@ body {
 
 .movie-title {
   font-weight: bold;
-  font-size: 14px;
+  font-size: .5rem;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -202,13 +202,15 @@ body {
 
 .card-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 5rem;
     max-width: 1200px;
     width: 100%;
     justify-items: center;
     margin-top: 2rem;
     margin-bottom: 2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 
 
@@ -218,7 +220,7 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.15);
     box-shadow: 8px 8px 15px #a3b1c6, -8px -8px 15px #ffffff;
     overflow: hidden;
-    max-width: 280px;
+    max-width: 160px;
     height: 100%;
     position: relative;
     display: flex;
@@ -240,8 +242,8 @@ body {
 
 
 .movie-card h2 {
-    font-size: 1.3rem;
-    margin: .5rem 0;
+    font-size: 1rem;
+    margin: .5rem .5rem;
     font-weight: 400;
     color: #ffffff; 
 }

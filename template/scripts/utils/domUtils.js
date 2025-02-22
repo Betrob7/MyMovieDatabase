@@ -1,4 +1,6 @@
 import { likeButtonListener } from "../modules/eventHandlers.js";
+import { fetchMovieInformation } from "../modules/api.js";
+import { getRandomTopMovies } from "../components/shuffle.js";
 
 // felmeddelande som används ifall karusellen inte laddas
 function showErrorMessage(message) {
@@ -25,7 +27,7 @@ function showErrorMessageMovieInfo(message) {
         contentWrapper.prepend(errorMessage);
 }
 // används för att trycka ut klassernas toppfilmer på första sidan
-function displayTopMovies(movies) {
+async function displayTopMovies(movies) {
     const cardContainer = document.querySelector('#cardContainer'); 
 
     const favorites = JSON.parse(localStorage.getItem('likedMovies')) || []; // hämtar arrayen med imdbID från gillade filmer i localStorage
@@ -34,12 +36,14 @@ function displayTopMovies(movies) {
     let movieCard = document.createElement('article');
         movieCard.classList.add('movie-card');
         movieCard.dataset.imdbid = movie.imdbID; // lägger till dataid som blir detsamma som imdbID
+        const movieInfo = await fetchMovieInformation(movie.imdbID);
 
         const isLiked = favorites.includes(movie.imdbID) ? 'liked' : ''; // den här är intressant! använder en ternär operator(kortform av if/else) för att kontrollera om en film är gillad för att sen returnera en sträng baserat på resultatet
         // om det är sant att favorites.includes(movie.imdbID) då sparas 'liked' ner i isLiked, annars retuneras en tom sträng ''.
         movieCard.innerHTML = `
         <img src="${movie.Poster}" alt="${movie.Title}">
         <h2>${movie.Title}</h2>
+        <p>⭐ Imdb rating: ${movieInfo.imdbRating ? movieInfo.imdbRating : ''}</p>
         <a href="${movie.Trailer_link}" target="_blank">Trailer</a> 
         <button class="like-btn ${isLiked}">${isLiked ? "❤️" : "🤍"}</button>` // här lägger jag till isLiked som klass, som antingen är liked eller '', för att sen återigen använda ternär operator, ${isLiked} är condition, följt av ? sen vid true visas symbolen för gillad film, : vid false visas symbolen för ickegillad film.
         cardContainer.appendChild(movieCard);
@@ -47,13 +51,14 @@ function displayTopMovies(movies) {
     likeButtonListener(); // anropar funktion som lyssnar efter klick på .like-btn 
 }
 // återanvänder funktionen från ovan för att visa filmer vid sökning
-function displayMovies(movies) {
+async function displayMovies(movies) {
     let searchResults = document.querySelector('#searchResults');
         searchResults.textContent = ''; //nollställer sökresultatet
 
         const favorites = JSON.parse(localStorage.getItem('likedMovies')) || [];
     
     for(let movie of movies) {
+        const movieInfo = await fetchMovieInformation(movie.imdbID);
         let movieRef = document.createElement('article');
             movieRef.classList.add('movie-card');
             movieRef.dataset.imdbid = movie.imdbID;
@@ -61,8 +66,9 @@ function displayMovies(movies) {
             const isLiked = favorites.includes(movie.imdbID) ? 'liked' : '';
 
             movieRef.innerHTML = `
-            <img src="${movie.Poster}" alt="${movie.Title}">
+            <img src="${movie.Poster !== 'N/A' ? movie.Poster : './res/icons/missing-poster.svg'}" alt="${movie.Title}">
             <h2>${movie.Title}</h2>
+            <p>⭐ Imdb rating: ${movieInfo.imdbRating ? movieInfo.imdbRating : ''}</p>
             <a href="${movie.Trailer_link}" target="_blank">Trailer</a>
             <button class="like-btn ${isLiked}">${isLiked ? "❤️" : "🤍"}</button>`
             searchResults.appendChild(movieRef);
@@ -74,7 +80,7 @@ function displayMovieInformation(movie) {
         let movieInfo = document.querySelector('#movieInformation');
             movieInfo.classList.add('movie-information');
             movieInfo.innerHTML = `
-            <img src="${movie.Poster}" alt="${movie.Title}">
+            <img src="${movie.Poster !== 'N/A' ? movie.Poster : './res/icons/missing-poster.svg'}" alt="${movie.Title}">
             <div>
                 <h2>${movie.Title}</h2>
                 <p><strong>Year:</strong> ${movie.Year}</p>
