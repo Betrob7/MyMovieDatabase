@@ -114,7 +114,7 @@ function displayLikedMovie(movie) {
     likeButtonListener();
 }
 
-function displaySurpriseMovie(movie) {
+async function displaySurpriseMovie(movie) {
     let container = document.querySelector("#surprisedResults");
     container.innerHTML = '';
     
@@ -125,10 +125,12 @@ function displaySurpriseMovie(movie) {
     movieCard.classList.add("movie-card", "movie-card__favorite");
     movieCard.dataset.imdbid = movie.imdbID;
     const isLiked = favorites.includes(movie.imdbID) ? 'liked' : '';
+    const movieInfo = await fetchMovieInformation(movie.imdbID);
 
     movieCard.innerHTML = `
         <img src="${movie.Poster}" alt="${movie.Title}">
         <h2>${movie.Title}</h2>
+        <p>⭐ Imdb rating: ${movieInfo.imdbRating ? movieInfo.imdbRating : ''}</p>
         <a href="${movie.Trailer_link}" target="_blank">Trailer</a> 
         <button class="like-btn ${isLiked}">${isLiked ? "❤️" : "🤍"}</button>
     `;

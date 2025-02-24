@@ -25,6 +25,7 @@ html {
 body {
     background: radial-gradient(circle, #4B0000, #1A0000, #000000);
     max-width: 100%;
+    height: 100vh;
 }
 
 /* Utils */
@@ -40,6 +41,7 @@ body {
     display: none;
 }
 
+/*Header*/
 .header {
     background: radial-gradient(circle, #4B0000, #1A0000, #000000);
     width: 100%;
@@ -133,25 +135,22 @@ body {
 }
 
 /*Dropdown meny*/
-/* Placera dropdownen precis under sökfältet och gör den kompakt */
 .header__form {
-  position: relative; /* Viktigt för att dropdownen ska positioneras korrekt */
+  position: relative;
   width: 100%;
-  max-width: 400px; /* Justera till den bredd du önskar */
+  max-width: 40%;
   margin: 0 auto;
 }
 
 .dropdown-list {
   list-style-type: none;
-  padding: 0;
-  margin: 5px 0 0 0;
   border: 1px solid #ddd;
-  border-radius: 10px;
+  border-radius: 1rem;
   max-height: 300px;
   overflow-y: auto;
   position: absolute;
-  width: 100%; /* Samma bredd som form:en */
-  top: 100%; /* Placera direkt under input-fältet */
+  width: 100%; 
+  top: 100%; 
   left: 0;
   background-color: rgb(72, 11, 11);
   color: #fff;
@@ -185,6 +184,7 @@ body {
   border-radius: 5px;
 }
 
+/*film-info*/
 .movie-info {
   display: flex;
   flex-direction: column;
@@ -205,7 +205,7 @@ body {
 }
 
   
-/*error message*/
+/*felmeddelande*/
 .error-message-API {
     color: red;
     text-align: center;
@@ -217,8 +217,10 @@ body {
     margin: 1rem;
 }
 
+/*Film galleri*/
 .card-container {
     display: grid;
+    background: radial-gradient(circle, #4B0000, #1A0000, #000000);
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 5rem;
     max-width: 1200px;
@@ -235,7 +237,7 @@ body {
     background-color: rgba(255, 255, 255, 0.08);
     border-radius: 1rem;
     border: 1px solid rgba(255, 255, 255, 0.15);
-    box-shadow: 8px 8px 15px #a3b1c6, -8px -8px 15px #ffffff;
+    /* box-shadow: 8px 8px 15px #a3b1c6, -8px -8px 15px #ffffff; */
     overflow: hidden;
     max-width: 160px;
     height: 100%;
@@ -243,7 +245,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.5s ease, box-shadow 0.3s ease;
     text-align: center;
     color: #ffffff; 
 }
@@ -275,15 +277,12 @@ body {
     border-radius: 3rem;
     width: 80%;
     margin: .5rem auto 1rem auto;
-    box-shadow: inset 4px 4px 8px #a3b1c6, inset -4px -4px 8px #ffffff;
     transition: background 0.3s ease, transform 0.3s ease;
     font-weight: 300;
-    letter-spacing: 1px;
 }
 
 .movie-card a:hover {
     background: rgba(255, 255, 255, 0.3);
-    transform: translateY(-3px);
 }
 
 .movie-card :hover {
@@ -318,7 +317,7 @@ body {
 
 .movie-card:hover {
     transform: translateY(-5px);
-    box-shadow: 12px 12px 24px #a3b1c6, -12px -12px 24px #ffffff;
+    box-shadow: 8px 8px 18px #a3b1c6, -8px -8px 18px #ffffff;
 }
 
 .movie-information {
@@ -388,17 +387,20 @@ body {
     font-weight: 500;
     border-radius: 50px;
     text-align: center;
-    box-shadow: inset 4px 4px 8px #a3b1c6, inset -4px -4px 8px #ffffff;
     transition: background 0.3s ease, transform 0.3s ease;
 }
 
 #backButton:hover {
     background: rgba(255, 255, 255, 0.3);
-    transform: translateY(-3px);
 }
 
 /*search page*/
 .search-title {
+    color: #fff;
+}
+
+/*surprise page*/
+.surprise-title {
     color: #fff;
 }
 
