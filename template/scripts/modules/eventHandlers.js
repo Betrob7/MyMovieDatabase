@@ -1,5 +1,6 @@
 import { toggleLike } from "../components/toggle.js";
 import { fetchOmdbMovies } from "./api.js";
+import { surpriseMovie } from "./surprise.js";
 //lyssnare för sökrutan
 function searchListener() {
     console.log('searchListener()');
@@ -146,4 +147,22 @@ function dropdownMenuListener() {
       }
     });
 }
-export {searchListener, moreInfoListener, topMoviesListener, likeButtonListener, moreFavouriteInfoListener, dropdownMenuListener};
+
+function surpriseButtonListener() {
+    const surpriseBtn = document.querySelector('#surpriseBtn');
+    surpriseBtn.addEventListener('click', (event) => {
+      event.preventDefault();
+      surpriseMovie();
+    })
+}
+
+function surpriseMovieListener() {
+  const surpriseMovie = document.querySelector('#surprisedResults');
+        surpriseMovie.addEventListener('click', (event) => {
+          let movieCard = event.target.closest('.movie-card');
+          let imdbID = movieCard.dataset.imdbid;
+          localStorage.setItem('selectedMovie', imdbID);
+          window.location.href = 'movie.html';
+        })
+}
+export {searchListener, moreInfoListener, topMoviesListener, likeButtonListener, moreFavouriteInfoListener, dropdownMenuListener, surpriseButtonListener, surpriseMovieListener};
