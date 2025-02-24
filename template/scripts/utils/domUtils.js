@@ -1,6 +1,6 @@
 import { likeButtonListener } from "../modules/eventHandlers.js";
 import { fetchMovieInformation } from "../modules/api.js";
-import { getRandomTopMovies } from "../components/shuffle.js";
+
 
 // felmeddelande som används ifall karusellen inte laddas
 function showErrorMessage(message) {
@@ -38,7 +38,7 @@ async function displayTopMovies(movies) {
         movieCard.dataset.imdbid = movie.imdbID; // lägger till dataid som blir detsamma som imdbID
         const movieInfo = await fetchMovieInformation(movie.imdbID);
 
-        const isLiked = favorites.includes(movie.imdbID) ? 'liked' : ''; // den här är intressant! använder en ternär operator(kortform av if/else) för att kontrollera om en film är gillad för att sen returnera en sträng baserat på resultatet
+        const isLiked = favorites.includes(movie.imdbID) ? 'liked' : ''; // använder en ternär operator(kortform av if/else) för att kontrollera om en film är gillad för att sen returnera en sträng baserat på resultatet
         // om det är sant att favorites.includes(movie.imdbID) då sparas 'liked' ner i isLiked, annars retuneras en tom sträng ''.
         movieCard.innerHTML = `
         <img src="${movie.Poster}" alt="${movie.Title}">
@@ -114,6 +114,28 @@ function displayLikedMovie(movie) {
     likeButtonListener();
 }
 
-export {showErrorMessage, displayTopMovies, displayMovies, showErrorMessageSearch, showErrorMessageMovieInfo, displayMovieInformation, displayLikedMovie};
+function displaySurpriseMovie(movie) {
+    let container = document.querySelector("#surprisedResults");
+    container.innerHTML = '';
+    
+
+    const favorites = JSON.parse(localStorage.getItem('likedMovies')) || [];
+
+    let movieCard = document.createElement("article");
+    movieCard.classList.add("movie-card", "movie-card__favorite");
+    movieCard.dataset.imdbid = movie.imdbID;
+    const isLiked = favorites.includes(movie.imdbID) ? 'liked' : '';
+
+    movieCard.innerHTML = `
+        <img src="${movie.Poster}" alt="${movie.Title}">
+        <h2>${movie.Title}</h2>
+        <a href="${movie.Trailer_link}" target="_blank">Trailer</a> 
+        <button class="like-btn ${isLiked}">${isLiked ? "❤️" : "🤍"}</button>
+    `;
+    container.appendChild(movieCard);
+    likeButtonListener();
+}
+
+export {showErrorMessage, displayTopMovies, displayMovies, showErrorMessageSearch, showErrorMessageMovieInfo, displayMovieInformation, displayLikedMovie, displaySurpriseMovie};
 
 

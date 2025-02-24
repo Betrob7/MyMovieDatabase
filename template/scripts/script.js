@@ -1,4 +1,4 @@
-import { initIndexPage, initFavoritesPage, initMoviePage, initSearchPage } from "./modules/pageInit.js";
+import { initIndexPage, initFavoritesPage, initMoviePage, initSearchPage, initSurprisePage } from "./modules/pageInit.js";
 
 
 
@@ -18,6 +18,10 @@ if(window.location.pathname === '/' || window.location.pathname.includes('index.
     console.log('search.html');
     initSearchPage();
 
+} else if (window.location.pathname.includes('surprise.html')) {
+    console.log('surprise.html');
+    initSurprisePage();
+    
 }
 
 
