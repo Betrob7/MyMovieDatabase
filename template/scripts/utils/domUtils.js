@@ -1,4 +1,4 @@
-import { likeButtonListener } from "../modules/eventHandlers.js";
+import { likeButtonListener, trailerListener } from "../modules/eventHandlers.js";
 import { fetchMovieInformation } from "../modules/api.js";
 
 
@@ -49,6 +49,7 @@ async function displayTopMovies(movies) {
         cardContainer.appendChild(movieCard);
     }
     likeButtonListener(); // anropar funktion som lyssnar efter klick på .like-btn 
+    trailerListener();
 }
 // återanvänder funktionen från ovan för att visa filmer vid sökning
 async function displayMovies(movies) {
@@ -74,12 +75,16 @@ async function displayMovies(movies) {
             searchResults.appendChild(movieRef);
     }
     likeButtonListener();
+    trailerListener();
 }
 // används för att visa "mer info" om en film
 function displayMovieInformation(movie) {
         let movieInfo = document.querySelector('#movieInformation');
             movieInfo.classList.add('movie-information');
             movieInfo.innerHTML = `
+            <a id="backButton" title="Go back">
+            <i class="fas fa-undo-alt"></i>
+            </a>
             <img src="${movie.Poster !== 'N/A' ? movie.Poster : './res/icons/missing-poster.svg'}" alt="${movie.Title}">
             <div>
                 <h2>${movie.Title}</h2>
@@ -89,40 +94,39 @@ function displayMovieInformation(movie) {
                 <p><strong>Writer:</strong> ${movie.Writer}</p>
                 <p><strong>Actors:</strong> ${movie.Actors}</p>
                 <p><strong>Plot:</strong> ${movie.Plot}</p>
-                <a id="backButton" href="index.html">Back</a>
             </div>
         `;
 }
 // används för att visa filmer som gillats på favoritsidan
-function displayLikedMovie(movie) {
+async function displayLikedMovie(movie) {
     const container = document.querySelector("#favoritesContainer");
-
     const favorites = JSON.parse(localStorage.getItem('likedMovies')) || [];
 
     let movieCard = document.createElement("article");
     movieCard.classList.add("movie-card", "movie-card__favorite");
     movieCard.dataset.imdbid = movie.imdbID;
     const isLiked = favorites.includes(movie.imdbID) ? 'liked' : '';
+    const movieInfo = await fetchMovieInformation(movie.imdbID);
 
     movieCard.innerHTML = `
         <img src="${movie.Poster}" alt="${movie.Title}">
         <h2>${movie.Title}</h2>
-        <p>Year: ${movie.Year}</p>
+        <p>⭐ Imdb rating: ${movieInfo.imdbRating ? movieInfo.imdbRating : ''}</p>
+        <a href="${movie.Trailer_link}" target="_blank">Trailer</a>
         <button class="like-btn ${isLiked}">${isLiked ? "❤️" : "🤍"}</button>
     `;
     container.appendChild(movieCard);
-    likeButtonListener();
 }
 
 async function displaySurpriseMovie(movie) {
-    let container = document.querySelector("#surprisedResults");
+    let container = document.querySelector('#surprisedResults');
     container.innerHTML = '';
     
 
     const favorites = JSON.parse(localStorage.getItem('likedMovies')) || [];
 
-    let movieCard = document.createElement("article");
-    movieCard.classList.add("movie-card", "movie-card__favorite");
+    let movieCard = document.createElement('article');
+    movieCard.classList.add('movie-card', 'movie-card__favorite');
     movieCard.dataset.imdbid = movie.imdbID;
     const isLiked = favorites.includes(movie.imdbID) ? 'liked' : '';
     const movieInfo = await fetchMovieInformation(movie.imdbID);

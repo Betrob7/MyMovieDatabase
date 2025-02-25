@@ -20,7 +20,6 @@ function initFavoritesPage() {
     renderLikedMovies();
     moreFavouriteInfoListener();
     dropdownMenuListener();
-    likeButtonListener();
 }
 
 function initMoviePage() {

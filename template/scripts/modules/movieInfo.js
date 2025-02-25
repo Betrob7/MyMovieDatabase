@@ -1,6 +1,7 @@
 import { showErrorMessageMovieInfo } from "../utils/domUtils.js";
 import { fetchMovieInformation } from "./api.js";
 import { displayMovieInformation } from "../utils/domUtils.js";
+import { backButtonListener } from "./eventHandlers.js";
 
 async function renderMovieInformation() {
     const selectedMovie = localStorage.getItem('selectedMovie'); //hämtar den valda filmens imdbID från localStorage som tidigare sparats vid klick
@@ -17,6 +18,6 @@ async function renderMovieInformation() {
         }
 
         displayMovieInformation(movie); //kör displayMovieInformation() med den valda filmen för att trycka ut infon på skärmen
-
+        backButtonListener();
 }
 export {renderMovieInformation};
