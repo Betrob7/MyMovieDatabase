@@ -100,6 +100,13 @@ function likeButtonListener() {
     });
 }
 
+function backButtonListener() {
+  const backBtn = document.querySelector('#backButton');
+        backBtn.addEventListener('click', () => {
+          window.history.back();
+        })
+}
+
 //lyssnare för dropdown-meny
 function dropdownMenuListener() {
 
@@ -165,4 +172,13 @@ function surpriseMovieListener() {
           window.location.href = 'movie.html';
         })
 }
-export {searchListener, moreInfoListener, topMoviesListener, likeButtonListener, moreFavouriteInfoListener, dropdownMenuListener, surpriseButtonListener, surpriseMovieListener};
+
+function trailerListener() {
+  const trailerBtns = document.querySelectorAll('.movie-card > a');
+        for(let btn of trailerBtns) {
+          btn.addEventListener('click', (event) => {
+            event.stopPropagation();
+          })
+        }
+}
+export {searchListener, moreInfoListener, topMoviesListener, likeButtonListener, moreFavouriteInfoListener, dropdownMenuListener, surpriseButtonListener, surpriseMovieListener, trailerListener, backButtonListener};
