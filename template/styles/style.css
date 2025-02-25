@@ -412,6 +412,10 @@ body {
     color: #fff;
 }
 
+.movie-card__searched {
+    padding-bottom: .75rem;
+}
+
 /*surprise page*/
 .surprise-title {
     color: #fff;
@@ -422,6 +426,9 @@ body {
     color: #fff;
 }
 
+.movie-card__favorite {
+    padding-bottom: .75rem;
+}
 
 @media (max-width: 768px) {
     .movie-information {

@@ -1,7 +1,7 @@
 import { renderRandomTrailers } from "../modules/caroussel.js";
 import { renderTopMovies } from "../modules/topMovies.js";
 import { renderSearchedMovies } from "../modules/search.js";
-import { searchListener, moreInfoListener, topMoviesListener, moreFavouriteInfoListener, dropdownMenuListener, surpriseButtonListener, surpriseMovieListener, likeButtonListener } from "../modules/eventHandlers.js";
+import { searchListener, moreInfoListener, topMoviesListener, moreFavouriteInfoListener, dropdownMenuListener, surpriseButtonListener, surpriseMovieListener, likeButtonListener, } from "../modules/eventHandlers.js";
 import { renderMovieInformation } from "../modules/movieInfo.js";
 import { renderLikedMovies } from "../modules/favourites.js";
 import { surpriseMovie } from "./surprise.js";
@@ -12,12 +12,14 @@ function initIndexPage() {
     renderTopMovies();
     searchListener();
     topMoviesListener();
+    likeButtonListener();
     dropdownMenuListener();
 }
 
 function initFavoritesPage() {
     searchListener();
     renderLikedMovies();
+    console.log("Antal hjärtan på sidan:", document.querySelectorAll('.like-btn').length);
     moreFavouriteInfoListener();
     dropdownMenuListener();
 }
