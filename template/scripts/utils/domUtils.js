@@ -1,8 +1,6 @@
 import { likeButtonListener, trailerListener, dropdownMenuListener, dropdownMenuMovieListener } from "../modules/eventHandlers.js";
 import { fetchMovieInformation, fetchOmdbMovies } from "../modules/api.js";
 
-
-
 // felmeddelande som används ifall karusellen inte laddas
 function showErrorMessage(message) {
     const contentWrapper = document.querySelector('#carousselSection');
@@ -141,25 +139,25 @@ async function displaySurpriseMovie(movie) {
     likeButtonListener();
     trailerListener();
 }
-
+//funktionen som trycker ut dropdown-menyn på skärmen
 async function displayDropdownMenu(searchText) {
     const searchInput = document.querySelector('#searchInput');
-    const dropdown = document.querySelector('#dropdown');       
+    const dropdown = document.querySelector('#dropdown');        
     const movies = await fetchOmdbMovies(searchText);
-    dropdown.innerHTML = ''; 
-    if(searchText.length < 3) {
+    dropdown.innerHTML = ''; //nollställer dropdown
+    if(searchText.length < 3) { //visar inte dropdown-menyn om sökningen är mindre än 3 tecken
         dropdown.style.display = 'none';
         return;
     }
 
-    if(searchText.length > 5 && movies.length === 0) {
+    if(searchText.length > 5 && movies.length === 0) { //om sökningen är över 5 tecken men ingen film hittas så visas ett felmeddelande
          dropdown.style.display = 'block';
          dropdown.classList.add('dropdown-list__error-msg');
          dropdown.innerHTML = `<p>Sorry, no movies found!</p>`;
          return;
      }
 
-    for(let movie of movies) {
+    for(let movie of movies) { //loopar igenom alla filmer som matchar sökningen och skapar upp list-element
         const movieList = document.createElement("li");
         movieList.innerHTML = `
           <img src="${movie.Poster !== "N/A" ? movie.Poster : "./res/icons/missing-poster.svg"}" alt="${movie.Title}">
@@ -168,10 +166,10 @@ async function displayDropdownMenu(searchText) {
             <p class="movie-year">${movie.Year}</p>
           </div>
         `;
-        dropdown.appendChild(movieList);
-        dropdownMenuMovieListener(movieList);
+        dropdown.appendChild(movieList); 
+        dropdownMenuMovieListener(movieList); //kör lyssnaren för varje enskild film och skickar in list-elementen
     }
-        dropdown.style.display = 'block';
+        dropdown.style.display = 'block'; //visar dropdown när filmer lagts till
 }
 
 export {showErrorMessage, displayTopMovies, displayMovies, showErrorMessageSearch, showErrorMessageMovieInfo, displayMovieInformation, displayLikedMovie, displaySurpriseMovie, displayDropdownMenu};

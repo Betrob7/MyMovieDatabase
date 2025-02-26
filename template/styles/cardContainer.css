@@ -8,17 +8,15 @@
 /*Film galleri*/
 .card-container {
     display: grid;
-    /* background: radial-gradient(circle, #4B0000, #1A0000, #000000); */
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 5rem;
     max-width: 1200px;
     width: 100%;
     justify-items: center;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+    padding-top: 2rem;
     padding-left: 1rem;
     padding-right: 1rem;
-    padding-bottom: 4rem;
+    padding-bottom: 8rem;
 }
 
 
@@ -26,7 +24,6 @@
     background-color: rgba(255, 255, 255, 0.08);
     border-radius: 1rem;
     border: 1px solid rgba(255, 255, 255, 0.15);
-    /* box-shadow: 8px 8px 15px #a3b1c6, -8px -8px 15px #ffffff; */
     overflow: hidden;
     max-width: 160px;
     height: 100%;
