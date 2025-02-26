@@ -15,7 +15,7 @@
          const movie = await fetchMovieInformation(imdbID); //sparar ner det som hämtas från API-anropet som görs på imdbID från likedMovies
          displayLikedMovie(movie); // skickar in resultatet i displayLikedMovie() som trycker ut filmerna på skärmen
      } 
-     setTimeout(() => {
+     setTimeout(() => { //sätter en kort timeout så att alla korten renderas innan lyssnaren för like-knappen sätts på
             likeButtonListener();
             }, 100);
  }

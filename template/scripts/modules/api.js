@@ -20,7 +20,7 @@ export async function fetchTopMovies() {
         return []; //returnerar en tom array vid fel för att inte krascha programmet
     }
 }
-//hämtar filmer från OMDB-API, tar emot ett query-argument(sökord)
+//hämtar filmer från OMDB-API, tar emot ett query-argument(s=filmtitel)
 async function fetchOmdbMovies(query) {
     try {let response = await fetch(`http://www.omdbapi.com/?apikey=a1dc276d&s=${query}`);
         if(!response.ok) {
@@ -42,7 +42,7 @@ async function fetchOmdbMovies(query) {
         
     }
 }
-//används för att hämta mer detaljerad info om en specifik film med hjälp av imdbID
+//hämtar mer info om filmerna från OMDB-API, tar emot ett query-argument(i=imdbID)
 async function fetchMovieInformation(query) {
     try {let response = await fetch(`http://www.omdbapi.com/?apikey=a1dc276d&plot=full&i=${query}`);
         if(!response.ok) {

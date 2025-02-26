@@ -13,8 +13,8 @@ export async function getRandomTrailers(count = 5) {
     const movies = await fetchTopMovies(); // Hämtar filmerna
     return shuffleArray(movies).slice(0, count); // Slumpar fram 5
 }
-
-async function getRandomTopMovies() {
+//slumpar filmerna på första sidan
+async function getRandomTopMovies() { 
     const movies = await fetchTopMovies();
     return shuffleArray(movies);
 }
