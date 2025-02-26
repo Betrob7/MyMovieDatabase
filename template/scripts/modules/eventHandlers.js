@@ -1,6 +1,7 @@
 import { toggleLike } from "../components/toggle.js";
 import { fetchOmdbMovies } from "./api.js";
 import { surpriseMovie } from "./surprise.js";
+import { displayDropdownMenu } from "../utils/domUtils.js";
 //lyssnare för sökrutan
 function searchListener() {
     console.log('searchListener()');
@@ -107,53 +108,36 @@ function backButtonListener() {
         })
 }
 
-//lyssnare för dropdown-meny
 function dropdownMenuListener() {
-
     const searchInput = document.querySelector('#searchInput');
-    const dropdown = document.querySelector('#dropdown');
-    
-    searchInput.addEventListener("input", async function () {
-      const searchText = searchInput.value.trim();
-    
-      if (searchText === '') {
-        dropdown.style.display = 'none';
-        dropdown.innerHTML = '';
-        return;
-      }
-    
-      const movies = await fetchOmdbMovies(searchText);
-      dropdown.innerHTML = '';
-    
-      if (movies.length > 0) {
-        movies.forEach((movie) => {
-          const li = document.createElement("li");
-          li.innerHTML = `
-            <img src="${movie.Poster !== "N/A" ? movie.Poster : "./res/icons/missing-poster.svg"}" alt="${movie.Title}">
-            <div class="movie-info">
-              <span class="movie-title">${movie.Title}</span>
-              <span class="movie-year">${movie.Year}</span>
-            </div>
-          `;
-          li.addEventListener("click", () => {
-            searchInput.value = movie.Title;
-            dropdown.style.display = "none";
-          });
-          dropdown.appendChild(li);
-        });
-        dropdown.style.display = "block";
-      } else {
-        dropdown.style.display = "none";
-      }
-    });
-    
-    // Dölj dropdown när man klickar utanför
+  searchInput.addEventListener("input", async function () {
+    const searchText = searchInput.value.trim();
+          displayDropdownMenu(searchText);
+    })
     document.addEventListener("click", (event) => {
       if (!event.target.closest(".header__form")) {
         dropdown.style.display = "none";
       }
     });
 }
+
+function dropdownMenuMovieListener(movieList) {
+  const searchInput = document.querySelector('#searchInput');
+  const dropdown = document.querySelector('#dropdown');
+
+  movieList.addEventListener("click", () => {
+      const movieTitle = movieList.querySelector(".movie-title");
+      if (movieTitle) {
+          searchInput.value = movieTitle.textContent.trim();
+          dropdown.style.display = "none";
+      } else {
+      dropdown.style.display = "none";
+      }
+  });
+}
+
+
+
 
 function surpriseButtonListener() {
     const surpriseBtn = document.querySelector('#surpriseBtn');
@@ -181,4 +165,4 @@ function trailerListener() {
           })
         }
 }
-export {searchListener, moreInfoListener, topMoviesListener, likeButtonListener, moreFavouriteInfoListener, dropdownMenuListener, surpriseButtonListener, surpriseMovieListener, trailerListener, backButtonListener};
+export {searchListener, moreInfoListener, topMoviesListener, likeButtonListener, moreFavouriteInfoListener, dropdownMenuListener, surpriseButtonListener, surpriseMovieListener, trailerListener, backButtonListener, dropdownMenuMovieListener};
