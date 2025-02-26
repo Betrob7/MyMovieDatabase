@@ -1,0 +1,110 @@
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+/*Film galleri*/
+.card-container {
+    display: grid;
+    /* background: radial-gradient(circle, #4B0000, #1A0000, #000000); */
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 5rem;
+    max-width: 1200px;
+    width: 100%;
+    justify-items: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 4rem;
+}
+
+
+.movie-card {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    /* box-shadow: 8px 8px 15px #a3b1c6, -8px -8px 15px #ffffff; */
+    overflow: hidden;
+    max-width: 160px;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.5s ease, box-shadow 0.3s ease;
+    text-align: center;
+    color: #ffffff; 
+}
+
+.movie-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover; 
+    object-position: center;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 1rem 1rem 0 0;
+}
+
+
+.movie-card h2 {
+    font-size: 1rem;
+    margin: .5rem .5rem;
+    font-weight: 400;
+    color: #ffffff; 
+}
+
+
+.movie-card a {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff; 
+    text-decoration: none;
+    padding: .5rem 1rem;
+    border-radius: 3rem;
+    width: 80%;
+    margin: .5rem auto 1rem auto;
+    transition: background 0.3s ease, transform 0.3s ease;
+    font-weight: 300;
+}
+
+.movie-card a:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.movie-card :hover {
+    cursor: pointer;
+}
+
+
+.like-btn {
+    position: absolute;
+    top: .5rem;
+    right: .5rem;
+    background: rgba(255, 255, 255, 0.15);
+    border: none;
+    color: #ff6b6b;
+    font-size: 1.8rem;
+    padding: .5rem;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.like-btn.liked {
+    background: rgba(255, 87, 87, 0.5);
+    color: white;
+}
+
+.like-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.2);
+}
+
+
+.movie-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 8px 8px 18px #a3b1c6, -8px -8px 18px #ffffff;
+}

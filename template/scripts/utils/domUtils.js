@@ -1,5 +1,6 @@
-import { likeButtonListener, trailerListener } from "../modules/eventHandlers.js";
-import { fetchMovieInformation } from "../modules/api.js";
+import { likeButtonListener, trailerListener, dropdownMenuListener, dropdownMenuMovieListener } from "../modules/eventHandlers.js";
+import { fetchMovieInformation, fetchOmdbMovies } from "../modules/api.js";
+
 
 
 // felmeddelande som används ifall karusellen inte laddas
@@ -114,7 +115,6 @@ async function displayLikedMovie(movie) {
         <button class="like-btn ${isLiked}">${isLiked ? "❤️" : "🤍"}</button>
     `;
     container.appendChild(movieCard);
-    //likeButtonListener();
 }
 
 
@@ -142,6 +142,38 @@ async function displaySurpriseMovie(movie) {
     trailerListener();
 }
 
-export {showErrorMessage, displayTopMovies, displayMovies, showErrorMessageSearch, showErrorMessageMovieInfo, displayMovieInformation, displayLikedMovie, displaySurpriseMovie};
+async function displayDropdownMenu(searchText) {
+    const searchInput = document.querySelector('#searchInput');
+    const dropdown = document.querySelector('#dropdown');       
+    const movies = await fetchOmdbMovies(searchText);
+    dropdown.innerHTML = ''; 
+    if(searchText.length < 3) {
+        dropdown.style.display = 'none';
+        return;
+    }
+
+    if(searchText.length > 5 && movies.length === 0) {
+         dropdown.style.display = 'block';
+         dropdown.classList.add('dropdown-list__error-msg');
+         dropdown.innerHTML = `<p>Sorry, no movies found!</p>`;
+         return;
+     }
+
+    for(let movie of movies) {
+        const movieList = document.createElement("li");
+        movieList.innerHTML = `
+          <img src="${movie.Poster !== "N/A" ? movie.Poster : "./res/icons/missing-poster.svg"}" alt="${movie.Title}">
+          <div class="movie-info">
+            <p class="movie-title">${movie.Title}</p>
+            <p class="movie-year">${movie.Year}</p>
+          </div>
+        `;
+        dropdown.appendChild(movieList);
+        dropdownMenuMovieListener(movieList);
+    }
+        dropdown.style.display = 'block';
+}
+
+export {showErrorMessage, displayTopMovies, displayMovies, showErrorMessageSearch, showErrorMessageMovieInfo, displayMovieInformation, displayLikedMovie, displaySurpriseMovie, displayDropdownMenu};
 
 

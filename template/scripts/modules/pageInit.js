@@ -19,7 +19,6 @@ function initIndexPage() {
 function initFavoritesPage() {
     searchListener();
     renderLikedMovies();
-    console.log("Antal hjärtan på sidan:", document.querySelectorAll('.like-btn').length);
     moreFavouriteInfoListener();
     dropdownMenuListener();
 }
