@@ -74,7 +74,7 @@ body {
     border-radius: 30px 0 0 30px;
     backdrop-filter: blur(10px);
     background-color: rgba(255, 255, 255, 0.1);
-    color: white;
+    color: var(--primary-white);
     border: 1px solid rgba(255, 255, 255, 0.3);
     transition: box-shadow 0.3s ease;
 }
@@ -91,7 +91,7 @@ body {
     border: none;
     background-color: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(10px);
-    color: white;
+    color: var(--primary-white);
     cursor: pointer;
     transition: background 0.3s ease;
 }
@@ -115,7 +115,7 @@ body {
     border: none;
     background-color: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(10px);
-    color: white;
+    color: var(--primary-white);
     text-decoration: none;
     cursor: pointer;
     transition: background 0.3s ease;
@@ -132,7 +132,7 @@ body {
     border: none;
     background-color: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(10px);
-    color: white;
+    color: var(--primary-white);
     text-decoration: none;
     cursor: pointer;
     transition: background 0.3s ease;
@@ -151,7 +151,7 @@ body {
 }
 
 .popular-title {
-    color: white;
+    color: var(--primary-white);
     margin: 1rem;
 }
 
@@ -160,7 +160,7 @@ body {
 .search-title {
     text-align: center;
     padding: .75rem;
-    color: #fff;
+    color: var(--primary-white);
 }
 
 .movie-card__searched {
@@ -170,28 +170,32 @@ body {
 /*top movies page*/
 .popular-title {
     margin-left: 1.85rem;
-    color: #fff;
+    color: var(--primary-white);
 }
 
 /*surprise page*/
 .surprise-title {
     text-align: center;
     padding: .75rem;
-    color: #fff;
+    color: var(--primary-white);
 }
 
 /*favorites page*/
 .favorites-title {
     text-align: center;
     padding: .75rem;
-    color: #fff;
+    color: var(--primary-white);
+}
+
+.favorites__error {
+    color: var(--primary-white);
 }
 
 /*movie-info page*/
 .movie-info-title {
     text-align: center;
     padding: .75rem;
-    color: #fff;
+    color: var(--primary-white);
 }
 
 .movie-card__favorite {
