@@ -7,7 +7,7 @@
      let likedMovies = JSON.parse(localStorage.getItem("likedMovies")) || []; //hämtar listan med gillade filmer från localStorage
 
      if (likedMovies.length === 0) { // kollar ifall listan är tom (ifall det finns några gillade filmer), om inte trycks ett felmeddelande ut och funktionen avslutas
-         document.querySelector('#favoritesContainer').innerHTML = `<p>You dont have any favorites yet!</p>`;
+         document.querySelector('#favoritesContainer').innerHTML = `<p class="favorites__error">You dont have any favorites yet!</p>`;
          return;
      }
 
