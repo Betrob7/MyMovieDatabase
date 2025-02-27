@@ -1,0 +1,82 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/*Dropdown meny*/
+.header__form {
+    position: relative;
+    width: 100%;
+    max-width: 40%;
+    margin: 0 auto;
+}
+
+.dropdown-list {
+    list-style-type: none;
+    border: 1px solid #ddd;
+    border-radius: 1rem;
+    max-height: 300px;
+    overflow-y: auto;
+    position: absolute;
+    width: 100%;
+    top: 100%;
+    left: 0;
+    background-color: rgb(72, 11, 11);
+    color: #fff;
+    display: none;
+    z-index: 100;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px;
+    cursor: pointer;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background-color 0.2s ease;
+}
+
+.dropdown-list li:last-child {
+    border-bottom: none;
+}
+
+.dropdown-list li:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Mörk overlay med 50% genomskinlighet */
+    transition: background-color 0.1s ease;
+}
+
+
+.dropdown-list img {
+    width: 15%;
+    height: 40%;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.dropdown-list__error-msg {
+    padding: .5rem;
+}
+
+/*film-info dropdown*/
+.movie-info {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.movie-title {
+    font-weight: bold;
+    font-size: .85rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.movie-year {
+    font-size: .75rem;
+    color: #fff;
+}

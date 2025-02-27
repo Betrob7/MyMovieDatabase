@@ -1,3 +1,4 @@
+@import url(./dropdownMenu.css);
 @import url(./movieInfo.css);
 @import url(./cardContainer.css);
 @import url('./carousel.css');
@@ -22,7 +23,7 @@
 body {
     background-color: var(--primary-bg);
     max-width: 100%;
-   
+
 }
 
 /* Utils */
@@ -31,6 +32,7 @@ body {
     max-width: 1200px;
     margin: 0 auto;
 }
+
 .center {
     margin: 0 auto;
 }
@@ -70,8 +72,8 @@ body {
     max-width: 400px;
     padding: 12px 20px;
     border-radius: 30px 0 0 30px;
-    backdrop-filter: blur(10px); 
-    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.1);
     color: white;
     border: 1px solid rgba(255, 255, 255, 0.3);
     transition: box-shadow 0.3s ease;
@@ -87,7 +89,7 @@ body {
     padding: 12px 20px;
     border-radius: 0 30px 30px 0;
     border: none;
-    background: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(10px);
     color: white;
     cursor: pointer;
@@ -111,7 +113,7 @@ body {
     padding: .5rem 0.75rem;
     border-radius: 1.5rem;
     border: none;
-    background: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(10px);
     color: white;
     text-decoration: none;
@@ -120,7 +122,7 @@ body {
 }
 
 .header__fav-btn:hover {
-    background: rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.3);
 }
 
 .header__surprise-btn {
@@ -128,7 +130,7 @@ body {
     padding: .5rem 0.75rem;
     border-radius: 1.5rem;
     border: none;
-    background: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(10px);
     color: white;
     text-decoration: none;
@@ -137,86 +139,10 @@ body {
 }
 
 .header__surprise-btn:hover {
-    background: rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.3);
 }
 
-/*Dropdown meny*/
-.header__form {
-  position: relative;
-  width: 100%;
-  max-width: 40%;
-  margin: 0 auto;
-}
 
-.dropdown-list {
-  list-style-type: none;
-  border: 1px solid #ddd;
-  border-radius: 1rem;
-  max-height: 300px;
-  overflow-y: auto;
-  position: absolute;
-  width: 100%; 
-  top: 100%; 
-  left: 0;
-  background-color: rgb(72, 11, 11);
-  color: #fff;
-  display: none;
-  z-index: 100;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-}
-
-.dropdown-list li {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 8px;
-  cursor: pointer;
-  border-bottom: 1px solid #f0f0f0;
-  transition: background-color 0.2s ease;
-}
-
-.dropdown-list li:last-child {
-  border-bottom: none;
-}
-
-.dropdown-list li:hover {
-    background-color: rgba(0, 0, 0, 0.5); /* Mörk overlay med 50% genomskinlighet */
-    transition: background-color 0.1s ease;
-  }
-  
-
-.dropdown-list img {
-  width: 15%;
-  height: 40%;
-  object-fit: cover;
-  border-radius: 5px;
-}
-
-.dropdown-list__error-msg {
-    padding: .5rem;
-}
-
-/*film-info dropdown*/
-.movie-info {
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
-
-.movie-title {
-  font-weight: bold;
-  font-size: .85rem;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.movie-year {
-  font-size: .75rem;
-  color: #fff;
-}
-
-  
 /*felmeddelande*/
 .error-message-API {
     color: red;
@@ -275,90 +201,71 @@ body {
 @media (max-width: 768px) {
     .movie-information {
         flex-direction: column;
-        padding: 20px;
+        padding: 1rem;
     }
 
     .movie-information img {
         width: 100%;
-        height: 300px;
-        margin-bottom: 20px;
+        height: 20%;
+        
     }
 
     .movie-information div {
         width: 100%;
-        padding: 20px;
-    }
-
-    .card-container {
-        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        padding: 1.5rem;
     }
 
     .movie-card {
-        max-width: 200px;
-        height: 420px;
+        max-width: 160px;
+        height: 100%;
     }
 
     .movie-card img {
         height: 60%;
     }
 
-    @media (max-width: 768px) {
-        .header__flex {
-            flex-direction: column;
-            align-items: center;
-            gap: 1rem; 
-        }
-    
-        .header__logo {
-            width: 120px; 
-        }
-    
-        .header__form {
-            flex-direction: column;
-            width: 100%;
-            max-width: 100%; 
-            align-items: center;
-        }
-    
-        .header__input {
-            width: 100%;
-            max-width: 90%;
-            border-radius: 30px;
-        }
-    
-        .header__form-btn {
-            width: 100%;
-            max-width: 90%;
-            margin-top: 0.5rem;
-            border-radius: 30px;
-        }
-    
-        .header__fav-btn,
-        .header__surprise-btn {
-            width: 100%;
-            max-width: 90%;
-            text-align: center;
-            margin: 0.5rem 0;
-            border-radius: 30px;
-        }
-    
-        .dropdown-list {
-            width: 90%;
-            left: 5%;
-        }
+
+    .header__flex {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
     }
-    
-    @media (max-width: 480px) {
-        .header__logo {
-            width: 100px;
-        }
-    
-        .header__input,
-        .header__form-btn,
-        .header__fav-btn,
-        .header__surprise-btn {
-            max-width: 100%;
-            width: 100%;
-        }
+
+    .header__logo {
+        width: 120px;
+    }
+
+    .header__form {
+        flex-direction: column;
+        width: 100%;
+        max-width: 100%;
+        align-items: center;
+    }
+
+    .header__input {
+        width: 100%;
+        max-width: 90%;
+        border-radius: 2rem;
+    }
+
+    .header__form-btn {
+        width: 100%;
+        max-width: 90%;
+        margin-top: 0.5rem;
+        border-radius: 2rem;
+    }
+
+    .header__fav-btn, .header__surprise-btn {
+        width: 100%;
+        max-width: 50%;
+        text-align: center;
+        border-radius: 2rem;
+    }
+
+    .dropdown-list {
+        width: 90%;
+        left: 5%;
+    }
 }
-}
+
+
