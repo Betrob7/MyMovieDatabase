@@ -3,8 +3,7 @@ import { displayTopMovies } from "../utils/domUtils.js";
 
 // trycker ut klassernas toppfilmer slumpade på skärmen
 async function renderTopMovies() {
-    const movies = await getRandomTopMovies(); 
-    displayTopMovies(movies); 
-    
+  const movies = await getRandomTopMovies();
+  displayTopMovies(movies);
 }
-export {renderTopMovies};
+export { renderTopMovies };

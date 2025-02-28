@@ -145,7 +145,7 @@ body {
 
 /*felmeddelande*/
 .error-message-API {
-    color: red;
+    color: var(--primary-white);
     text-align: center;
     margin-top: 10rem;
 }
@@ -211,7 +211,7 @@ body {
     .movie-information img {
         width: 100%;
         height: 20%;
-        
+
     }
 
     .movie-information div {
@@ -259,7 +259,8 @@ body {
         border-radius: 2rem;
     }
 
-    .header__fav-btn, .header__surprise-btn {
+    .header__fav-btn,
+    .header__surprise-btn {
         width: 100%;
         max-width: 50%;
         text-align: center;
@@ -271,5 +272,3 @@ body {
         left: 5%;
     }
 }
-
-
