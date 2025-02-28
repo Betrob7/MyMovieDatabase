@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Movie Database</title>
+    <title>My Movie Database - Surprise!</title>
     <link rel="stylesheet" href="./styles/style.css" />
     <script
       src="https://kit.fontawesome.com/f300007e95.js"
@@ -31,38 +31,16 @@
         <a href="./favorites.html" class="header__fav-btn" id="favBtn"
           >Favorites</a
         >
-        <a href="./surprise.html" class="header__surprise-btn" id="surpriseBtn"
-          >Surprise Me!</a>
+        <button class="header__surprise-btn" id="surpriseBtn">Surprise Me!</button>
       </div>
     </header>
 
-    <!-- Trailer Caroussel -->
+    <!-- Our surprise movies section -->
     <section>
-      <div id="carousselDiv" class="content-wrapper">
-        <section id="carousselSection" class="trailers">
-          <img
-            src="./res/icons/arrow-left.svg"
-            alt="left navigation arrow"
-            class="trailers__arrow trailers__arrow--left"
-            data-direction="left"
-          />
-          <img
-            src="./res/icons/arrow-right.svg"
-            alt="right navigation arrow"
-            class="trailers__arrow trailers__arrow--right"
-            data-direction="right"
-          />
-          <section class="trailers__container"></section>
-        </section>
-      </div>
-    </section>
-
-    <!-- Our recommended movies section -->
-    <section>
-      <div class="content-wrapper center">
-        <h2 class="popular-title">| Top movies |</h2>
-        <section class="card-container" id="cardContainer"></section>
-      </div>
-    </section>
+        <div class="content-wrapper">
+          <h2 class="surprise-title" id="surpriseHeader">| Surprise! |</h2>
+          <section class="card-container" id="surprisedResults"></section>
+        </div>
+      </section>
   </body>
 </html>

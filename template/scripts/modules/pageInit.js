@@ -1,37 +1,61 @@
 import { renderRandomTrailers } from "../modules/caroussel.js";
 import { renderTopMovies } from "../modules/topMovies.js";
 import { renderSearchedMovies } from "../modules/search.js";
-import { searchListener, moreInfoListener, topMoviesListener, moreFavouriteInfoListener, dropdownMenuListener } from "../modules/eventHandlers.js";
+import {
+  searchListener,
+  moreInfoListener,
+  topMoviesListener,
+  moreFavouriteInfoListener,
+  dropdownMenuListener,
+  surpriseButtonListener,
+  surpriseMovieListener,
+  likeButtonListener,
+} from "../modules/eventHandlers.js";
 import { renderMovieInformation } from "../modules/movieInfo.js";
 import { renderLikedMovies } from "../modules/favourites.js";
-
+import { surpriseMovie } from "./surprise.js";
 
 function initIndexPage() {
-    renderRandomTrailers();
-    renderTopMovies();
-    searchListener();
-    topMoviesListener();
-    dropdownMenuListener();
+  renderRandomTrailers();
+  renderTopMovies();
+  searchListener();
+  topMoviesListener();
+  likeButtonListener();
+  dropdownMenuListener();
 }
 
 function initFavoritesPage() {
-    searchListener();
-    renderLikedMovies();
-    moreFavouriteInfoListener();
-    dropdownMenuListener();
+  searchListener();
+  renderLikedMovies();
+  moreFavouriteInfoListener();
+  dropdownMenuListener();
 }
 
 function initMoviePage() {
-    searchListener();
-    renderMovieInformation();
-    dropdownMenuListener();
+  searchListener();
+  renderMovieInformation();
+  dropdownMenuListener();
 }
 
 function initSearchPage() {
-    renderSearchedMovies();
-    searchListener();
-    moreInfoListener();
-    dropdownMenuListener();
+  renderSearchedMovies();
+  searchListener();
+  moreInfoListener();
+  dropdownMenuListener();
 }
 
-export {initIndexPage, initFavoritesPage, initMoviePage, initSearchPage};
+function initSurprisePage() {
+  surpriseButtonListener();
+  surpriseMovie();
+  surpriseMovieListener();
+  searchListener();
+  dropdownMenuListener();
+}
+
+export {
+  initIndexPage,
+  initFavoritesPage,
+  initMoviePage,
+  initSearchPage,
+  initSurprisePage,
+};

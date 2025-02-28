@@ -1,3 +1,6 @@
+@import url(./dropdownMenu.css);
+@import url(./movieInfo.css);
+@import url(./cardContainer.css);
 @import url('./carousel.css');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
@@ -8,7 +11,6 @@
     --primary-bg: #000000;
     --primary-white: #ffffff;
     --primary-grey: #1A1A1A;
-    --text-yellow: #ffff;
 }
 
 /* Base */
@@ -18,20 +20,19 @@
     margin: 0;
 }
 
-html {
-    background-color: black;
-}
-
 body {
-    background: radial-gradient(circle, #4B0000, #1A0000, #000000);
+    background-color: var(--primary-bg);
     max-width: 100%;
+
 }
 
 /* Utils */
 .content-wrapper {
+    background: radial-gradient(circle, #4B0000, #1A0000, #000000);
     max-width: 1200px;
     margin: 0 auto;
 }
+
 .center {
     margin: 0 auto;
 }
@@ -40,6 +41,7 @@ body {
     display: none;
 }
 
+/*Header*/
 .header {
     background: radial-gradient(circle, #4B0000, #1A0000, #000000);
     width: 100%;
@@ -70,9 +72,9 @@ body {
     max-width: 400px;
     padding: 12px 20px;
     border-radius: 30px 0 0 30px;
-    backdrop-filter: blur(10px); 
-    background: rgba(255, 255, 255, 0.1);
-    color: white;
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--primary-white);
     border: 1px solid rgba(255, 255, 255, 0.3);
     transition: box-shadow 0.3s ease;
 }
@@ -87,9 +89,9 @@ body {
     padding: 12px 20px;
     border-radius: 0 30px 30px 0;
     border: none;
-    background: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(10px);
-    color: white;
+    color: var(--primary-white);
     cursor: pointer;
     transition: background 0.3s ease;
 }
@@ -107,316 +109,166 @@ body {
 }
 
 .header__fav-btn {
-    text-decoration: none;
-    font-size: 1.5rem;
-    color: var(--text-yellow);
-    background: none;
+    margin: 0rem 1rem 0rem 1rem;
+    padding: .5rem 0.75rem;
+    border-radius: 1.5rem;
     border: none;
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    color: var(--primary-white);
+    text-decoration: none;
     cursor: pointer;
+    transition: background 0.3s ease;
 }
 
-/*Dropdown meny*/
-/* Placera dropdownen precis under sökfältet och gör den kompakt */
-.header__form {
-  position: relative; /* Viktigt för att dropdownen ska positioneras korrekt */
-  width: 100%;
-  max-width: 400px; /* Justera till den bredd du önskar */
-  margin: 0 auto;
+.header__fav-btn:hover {
+    background-color: rgba(255, 255, 255, 0.3);
 }
 
-.dropdown-list {
-  list-style-type: none;
-  padding: 0;
-  margin: 5px 0 0 0;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  max-height: 300px;
-  overflow-y: auto;
-  position: absolute;
-  width: 100%; /* Samma bredd som form:en */
-  top: 100%; /* Placera direkt under input-fältet */
-  left: 0;
-  background-color: rgb(72, 11, 11);
-  color: #fff;
-  display: none;
-  z-index: 100;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+.header__surprise-btn {
+    margin: 0rem 1rem 0rem 1rem;
+    padding: .5rem 0.75rem;
+    border-radius: 1.5rem;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    color: var(--primary-white);
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.3s ease;
 }
 
-.dropdown-list li {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 8px;
-  cursor: pointer;
-  border-bottom: 1px solid #f0f0f0;
-  transition: background-color 0.2s ease;
+.header__surprise-btn:hover {
+    background-color: rgba(255, 255, 255, 0.3);
 }
 
-.dropdown-list li:last-child {
-  border-bottom: none;
-}
 
-.dropdown-list li:hover {
-  background-color: #f9f9f9;
-}
-
-.dropdown-list img {
-  width: 40px;
-  height: 60px;
-  object-fit: cover;
-  border-radius: 5px;
-}
-
-.movie-info {
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
-
-.movie-title {
-  font-weight: bold;
-  font-size: .5rem;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.movie-year {
-  font-size: 12px;
-  color: #777;
-}
-
-  
-/*error message*/
+/*felmeddelande*/
 .error-message-API {
-    color: red;
+    color: var(--primary-white);
     text-align: center;
     margin-top: 10rem;
 }
 
 .popular-title {
-    color: white;
+    color: var(--primary-white);
     margin: 1rem;
 }
 
-.card-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 5rem;
-    max-width: 1200px;
-    width: 100%;
-    justify-items: center;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
-}
-
-
-.movie-card {
-    background-color: rgba(255, 255, 255, 0.08);
-    border-radius: 1rem;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    box-shadow: 8px 8px 15px #a3b1c6, -8px -8px 15px #ffffff;
-    overflow: hidden;
-    max-width: 160px;
-    height: 100%;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    text-align: center;
-    color: #ffffff; 
-}
-
-.movie-card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; 
-    object-position: center;
-    background-color: rgba(255, 255, 255, 0.05);
-    border-radius: 1rem 1rem 0 0;
-}
-
-
-.movie-card h2 {
-    font-size: 1rem;
-    margin: .5rem .5rem;
-    font-weight: 400;
-    color: #ffffff; 
-}
-
-
-.movie-card a {
-    display: inline-block;
-    background: rgba(255, 255, 255, 0.15);
-    color: #ffffff; 
-    text-decoration: none;
-    padding: .5rem 1rem;
-    border-radius: 3rem;
-    width: 80%;
-    margin: .5rem auto 1rem auto;
-    box-shadow: inset 4px 4px 8px #a3b1c6, inset -4px -4px 8px #ffffff;
-    transition: background 0.3s ease, transform 0.3s ease;
-    font-weight: 300;
-    letter-spacing: 1px;
-}
-
-.movie-card a:hover {
-    background: rgba(255, 255, 255, 0.3);
-    transform: translateY(-3px);
-}
-
-.movie-card :hover {
-    cursor: pointer;
-}
-
-
-.like-btn {
-    position: absolute;
-    top: .5rem;
-    right: .5rem;
-    background: rgba(255, 255, 255, 0.15);
-    border: none;
-    color: #ff6b6b;
-    font-size: 1.8rem;
-    padding: .5rem;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: background 0.3s ease, transform 0.3s ease;
-}
-
-.like-btn.liked {
-    background: rgba(255, 87, 87, 0.5);
-    color: white;
-}
-
-.like-btn:hover {
-    background: rgba(255, 255, 255, 0.3);
-    transform: scale(1.2);
-}
-
-
-.movie-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 12px 12px 24px #a3b1c6, -12px -12px 24px #ffffff;
-}
-
-.movie-information {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    max-width: 1000px;
-    margin: 3rem auto;
-    padding: 2rem;
-    background-color: rgba(255, 255, 255, 0.08); 
-    border-radius: 30px;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    box-shadow: 8px 8px 15px #a3b1c6, -8px -8px 15px #ffffff;
-    color: #ffffff;
-    overflow: hidden;
-    transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
-}
-
-.movie-information img {
-    width: 40%;
-    height: 80%;
-    border-radius: 1rem;
-    object-fit: contain; 
-    background-color: rgba(255, 255, 255, 0.05);
-    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.2), -4px -4px 12px rgba(255, 255, 255, 0.2);
-}
-
-
-.movie-information div {
-    width: 60%;
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-
-.movie-information h2 {
-    font-size: 2rem;
-    margin-bottom: 15px;
-    font-weight: 600;
-    color: #ffffff;
-}
-
-
-.movie-information p {
-    font-size: 1rem;
-    margin: 10px 0;
-    line-height: 1.6;
-    color: #e0e0e0;
-}
-
-
-.movie-information p strong {
-    color: #ffcc66;
-    font-weight: 600;
-}
-
-
-#backButton {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 12px 28px;
-    background: rgba(255, 255, 255, 0.15);
-    color: #ffffff;
-    text-decoration: none;
-    font-weight: 500;
-    border-radius: 50px;
-    text-align: center;
-    box-shadow: inset 4px 4px 8px #a3b1c6, inset -4px -4px 8px #ffffff;
-    transition: background 0.3s ease, transform 0.3s ease;
-}
-
-#backButton:hover {
-    background: rgba(255, 255, 255, 0.3);
-    transform: translateY(-3px);
-}
 
 /*search page*/
 .search-title {
-    color: #fff;
+    text-align: center;
+    padding: .75rem;
+    color: var(--primary-white);
 }
 
-/*favoriter*/
+.movie-card__searched {
+    padding-bottom: .75rem;
+}
+
+/*top movies page*/
+.popular-title {
+    margin-left: 1.85rem;
+    color: var(--primary-white);
+}
+
+/*surprise page*/
+.surprise-title {
+    text-align: center;
+    padding: .75rem;
+    color: var(--primary-white);
+}
+
+/*favorites page*/
+.favorites-title {
+    text-align: center;
+    padding: .75rem;
+    color: var(--primary-white);
+}
+
+.favorites__error {
+    color: var(--primary-white);
+}
+
+/*movie-info page*/
+.movie-info-title {
+    text-align: center;
+    padding: .75rem;
+    color: var(--primary-white);
+}
+
 .movie-card__favorite {
-    padding-bottom: .5rem;
+    padding-bottom: .75rem;
 }
 
 @media (max-width: 768px) {
     .movie-information {
         flex-direction: column;
-        padding: 20px;
+        padding: 1rem;
     }
 
     .movie-information img {
         width: 100%;
-        height: 300px;
-        margin-bottom: 20px;
+        height: 20%;
+
     }
 
     .movie-information div {
         width: 100%;
-        padding: 20px;
-    }
-
-    .card-container {
-        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        padding: 1.5rem;
     }
 
     .movie-card {
-        max-width: 200px;
-        height: 420px;
+        max-width: 160px;
+        height: 100%;
     }
 
     .movie-card img {
         height: 60%;
+    }
+
+
+    .header__flex {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .header__logo {
+        width: 120px;
+    }
+
+    .header__form {
+        flex-direction: column;
+        width: 100%;
+        max-width: 100%;
+        align-items: center;
+    }
+
+    .header__input {
+        width: 100%;
+        max-width: 90%;
+        border-radius: 2rem;
+    }
+
+    .header__form-btn {
+        width: 100%;
+        max-width: 90%;
+        margin-top: 0.5rem;
+        border-radius: 2rem;
+    }
+
+    .header__fav-btn,
+    .header__surprise-btn {
+        width: 100%;
+        max-width: 50%;
+        text-align: center;
+        border-radius: 2rem;
+    }
+
+    .dropdown-list {
+        width: 90%;
+        left: 5%;
     }
 }
